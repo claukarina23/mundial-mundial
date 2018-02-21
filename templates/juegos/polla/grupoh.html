@@ -1,0 +1,96 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Grupo B</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 450px}
+
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;}
+    }
+  </style>
+</head>
+<body>
+
+<div class="container-fluid text-center">
+  <div class="row content">
+    <div class="col-sm-8 text-left">
+      <h3>Primera Jornada</h3>
+      <hr>
+      <h4>Colombia vs. Japón</h4>
+      <p>19/06/2018 | 07:00 hrs.</p>
+      <div class="btn-group">
+        <button type="button" class="apuesta btn btn-primary">Colombia<br>1.72</br></button>
+        <button type="button" class="apuesta btn btn-primary">Empate<br>3.60</br></button>
+        <button type="button" class="apuesta btn btn-primary">Japón<br>5.25</br></button>
+      </div>
+      <hr>
+      <h4>Polonia vs. Senegal</h4>
+      <p>19/06/2018 | 10:00 hrs.</p>
+      <div class="btn-group">
+        <button type="button" class="apuesta btn btn-primary">Polonia<br>2.20</br></button>
+        <button type="button" class="apuesta btn btn-primary">Empate<br>3.30</br></button>
+        <button type="button" class="apuesta btn btn-primary">Senegal<br>3.40</br></button>
+      </div>
+      <hr>
+      <h3>Segunda Jornada</h3>
+      <hr>
+      <h4>Japón vs. Senegal</h4>
+      <p>24/06/2018 | 10:00 hrs.</p>
+      <div class="btn-group">
+        <button type="button" class="apuesta btn btn-primary">Japón<br>3.00</br></button>
+        <button type="button" class="apuesta btn btn-primary">Empate<br>3.30</br></button>
+        <button type="button" class="apuesta btn btn-primary">Senegal<br>2.40</br></button>
+      </div>
+      <hr>
+      <h4>Polonia vs. Colombia</h4>
+      <p>24/06/2018 | 13:00 hrs.</p>
+      <div class="btn-group">
+        <button type="button" class="apuesta btn btn-primary">Polonia<br>2.80</br></button>
+        <button type="button" class="apuesta btn btn-primary">Empate<br>3.40</br></button>
+        <button type="button" class="apuesta btn btn-primary">Colombia<br>2.50</br></button>
+      </div>
+      <hr>
+      <h3>Tercera Jornada</h3>
+      <hr>
+      <h4>Japón vs. Polonia</h4>
+      <p>28/06/2018 | 00:00 hrs.</p>
+      <div class="btn-group">
+        <button type="button" class="apuesta btn btn-primary">Japón<br>4.25</br></button>
+        <button type="button" class="apuesta btn btn-primary">Empate<br>3.40</br></button>
+        <button type="button" class="apuesta btn btn-primary">Polonia<br>1.80</br></button>
+      </div>
+      <hr>
+      <h4>Senegal vs. Colombia</h4>
+      <p>28/06/2018 | 00:00 hrs.</p>
+      <div class="btn-group">
+        <button type="button" class="apuesta btn btn-primary">Senegal<br>4.00</br></button>
+        <button type="button" class="apuesta btn btn-primary">Empate<br>3.40</br></button>
+        <button type="button" class="apuesta btn btn-primary">Colombia<br>1.85</br></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="{% static 'js/polla/apuesta.js' %}"></script>
+</body>
+</html>

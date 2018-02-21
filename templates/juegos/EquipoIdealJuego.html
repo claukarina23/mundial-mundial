@@ -1,0 +1,599 @@
+{% extends 'base/base.html' %}
+{% load staticfiles %}
+{% block link%} 
+
+<link rel="stylesheet" href="{% static 'css/EquipoIdealJuego.css' %}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+ {%endblock %}
+
+
+{% block content %}
+  {% csrf_token %}
+
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <div class="navbar-brand" id="nombreUsuario" ></div>
+    </div>
+    <!--
+    <ul class="nav navbar-nav">
+      <li><a href="#">Page 1</a></li>
+    </ul>
+  -->
+  </div>
+</nav>
+
+
+<div style="padding:15px;text-align:center;">
+        <h1 style="font-family:fantasy;color:#FFFFFF;">Equipo Ideal Rusia 2018</h1>
+    </div>
+
+    <div class="row">
+        <div class="menu col-xs-4">
+            <div class="menuitem">
+                <table>
+                    <tr>
+                        <th>
+                            <!-- elegir tactica -->
+                            <div class="dropdown">
+                                <button id="drop-formaciones" class="btn btn-primary dropdown-toggle botones" type="button" data-toggle="dropdown">Elegir táctica
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a id="tacticas" class="formacion" style="cursor:pointer">4-4-2</a>
+                                    </li>
+                                    <li>
+                                        <a id="tacticas" class="formacion" style="cursor:pointer">4-3-3</a>
+                                    </li>
+                                    <li>
+                                        <a id="tacticas" class="formacion" style="cursor:pointer">3-4-3</a>
+                                    </li>
+                                    <li>
+                                        <a id="tacticas" class="formacion" style="cursor:pointer">4-5-1</a>
+                                    </li>
+                                    <li>
+                                        <a id="tacticas" class="formacion" style="cursor:pointer">5-4-1</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <br></br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div>
+                                <label style="font-family:fantasy; color:#4169E1; background-color:#FFFFFF; font-size:25px;" for="ptotal">Puntaje total del equipo:</label>
+                                <input disabled type="text" id="puntajetotal" name="ptotal" value="">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <br></br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div>
+                                <button id="guardadofinal" class="btn btn-primary dropdown-toggle botones" type="button" onclick="">Guardar</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div>
+                                <a href="{% url 'juegosmundial:juegos_listar' %}" class="btn btn-primary btn-lg">Regresar al Menú Principal</a>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="main col-xs-8 nada">
+            <div id="equipoideal3d">
+             <!-- <img src="{% static 'css/campofutbol.jpg' %}" alt="Mountain View">-->
+                <div id="arquero" class="arquero row nada"></div>
+                <div id="defensa" class="defensa row nada"></div>
+                <div id="medio" class="medio"></div>
+                <div id="delantero" class="delantero"></div>
+            </div>
+        </div>
+        <!--
+        <div class="right col-xs-3">
+            <h2 style="font-family:fantasy;color:#FFFFFF;">Ranking</h2>
+            <p>
+                <div>
+                    <ul class="list-group">
+                        <li class="list-group-item">...
+                            <span class="badge">0</span>
+                        </li>
+                        <li class="list-group-item">...
+                            <span class="badge">0</span>
+                        </li>
+                        <li class="list-group-item">...
+                            <span class="badge">0</span>
+                        </li>
+                        <li class="list-group-item">...
+                            <span class="badge">0</span>
+                        </li>
+                        <li class="list-group-item">...
+                            <span class="badge">0</span>
+                        </li>
+                        <li class="list-group-item">...
+                            <span class="badge">0</span>
+                        </li>
+                        <li class="list-group-item">...
+                            <span class="badge">0</span>
+                        </li>
+                        <li class="list-group-item">...
+                            <span class="badge">0</span>
+                        </li>
+                        <li class="list-group-item">...
+                            <span class="badge">0</span>
+                        </li>
+                        <li class="list-group-item">...
+                            <span class="badge">0</span>
+                        </li>
+                        <li class="list-group-item">...
+                            <span class="badge">0</span>
+                        </li>
+                    </ul>
+                </div>
+            </p>
+
+        </div>
+        -->
+      
+    </div>
+
+
+<div id="insertarmodal">
+</div>
+
+<!-- Trigger the modal with a button 
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+-->
+
+ 
+  <div class="modal fade" id="myModal1" role="dialog">
+    <div class="modal-dialog">
+    
+  
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Seleccionar Jugador</h4>
+        </div>
+        <div class="modal-body">
+        
+        
+    <div class="form-group">
+      <label for="sel1">Pais:</label>
+      <select class="form-control" id="1sel1">
+        <option>Seleccionar pais</option>
+      </select>
+    </div>
+    
+        <div class="form-group">
+      <label for="sel2">Jugador:</label>
+      <select class="form-control" id="1sel2">
+        <option>Seleccionar jugador</option>
+      </select>
+    </div>
+           
+           <p><span class="roomNumber"></span>.</p>     
+        
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="guardarjugador1">Guardar</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+ 
+<div class="modal fade" id="myModal2" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Seleccionar Jugador</h4>
+        </div>
+        <div class="modal-body">
+        
+        
+    <div class="form-group">
+      <label for="sel1">Pais:</label>
+      <select class="form-control" id="2sel1">
+        <option>Seleccionar pais</option>
+      </select>
+    </div>
+    
+        <div class="form-group">
+      <label for="sel2">Jugador:</label>
+      <select class="form-control" id="2sel2">
+        <option>Seleccionar jugador</option>
+      </select>
+    </div>
+           
+           <p><span class="roomNumber"></span>.</p>     
+        
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="guardarjugador2">Guardar</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <!-- Modalllllllllllllllllll3 -->
+
+<div class="modal fade" id="myModal3" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Seleccionar Jugador</h4>
+        </div>
+        <div class="modal-body">
+        
+        
+    <div class="form-group">
+      <label for="sel1">Pais:</label>
+      <select class="form-control" id="3sel1">
+        <option>Seleccionar pais</option>
+      </select>
+    </div>
+    
+        <div class="form-group">
+      <label for="sel2">Jugador:</label>
+      <select class="form-control" id="3sel2">
+        <option>Seleccionar jugador</option>
+      </select>
+    </div>
+           
+           <p><span class="roomNumber"></span>.</p>     
+        
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="guardarjugador3">Guardar</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <!-- Modalllllllllllllllllll -->
+<div class="modal fade" id="myModal4" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Seleccionar Jugador</h4>
+        </div>
+        <div class="modal-body">
+        
+        
+    <div class="form-group">
+      <label for="sel1">Pais:</label>
+      <select class="form-control" id="4sel1">
+        <option>Seleccionar pais</option>
+      </select>
+    </div>
+    
+        <div class="form-group">
+      <label for="sel2">Jugador:</label>
+      <select class="form-control" id="4sel2">
+        <option>Seleccionar jugador</option>
+      </select>
+    </div>
+           
+           <p><span class="roomNumber"></span>.</p>     
+        
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="guardarjugador4">Guardar</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <!-- Modalllllllllllllllllll -->
+<div class="modal fade" id="myModal5" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Seleccionar Jugador</h4>
+        </div>
+        <div class="modal-body">
+        
+        
+    <div class="form-group">
+      <label for="sel1">Pais:</label>
+      <select class="form-control" id="5sel1">
+        <option>Seleccionar pais</option>
+      </select>
+    </div>
+    
+        <div class="form-group">
+      <label for="sel2">Jugador:</label>
+      <select class="form-control" id="5sel2">
+        <option>Seleccionar jugador</option>
+      </select>
+    </div>
+           
+           <p><span class="roomNumber"></span>.</p>     
+        
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="guardarjugador5">Guardar</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <!-- Modalllllllllllllllllll -->
+<div class="modal fade" id="myModal6" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Seleccionar Jugador</h4>
+        </div>
+        <div class="modal-body">
+        
+        
+    <div class="form-group">
+      <label for="sel1">Pais:</label>
+      <select class="form-control" id="6sel1">
+        <option>Seleccionar pais</option>
+      </select>
+    </div>
+    
+        <div class="form-group">
+      <label for="sel2">Jugador:</label>
+      <select class="form-control" id="6sel2">
+        <option>Seleccionar jugador</option>
+      </select>
+    </div>
+           
+           <p><span class="roomNumber"></span>.</p>     
+        
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="guardarjugador6">Guardar</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <!-- Modalllllllllllllllllll -->
+<div class="modal fade" id="myModal7" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Seleccionar Jugador</h4>
+        </div>
+        <div class="modal-body">
+        
+        
+    <div class="form-group">
+      <label for="sel1">Pais:</label>
+      <select class="form-control" id="7sel1">
+        <option>Seleccionar pais</option>
+      </select>
+    </div>
+    
+        <div class="form-group">
+      <label for="sel2">Jugador:</label>
+      <select class="form-control" id="7sel2">
+        <option>Seleccionar jugador</option>
+      </select>
+    </div>
+           
+           <p><span class="roomNumber"></span>.</p>     
+        
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="guardarjugador7">Guardar</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <!-- Modalllllllllllllllllll -->
+<div class="modal fade" id="myModal8" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Seleccionar Jugador</h4>
+        </div>
+        <div class="modal-body">
+        
+        
+    <div class="form-group">
+      <label for="sel1">Pais:</label>
+      <select class="form-control" id="8sel1">
+        <option>Seleccionar pais</option>
+      </select>
+    </div>
+    
+        <div class="form-group">
+      <label for="sel2">Jugador:</label>
+      <select class="form-control" id="8sel2">
+        <option>Seleccionar jugador</option>
+      </select>
+    </div>
+           
+           <p><span class="roomNumber"></span>.</p>     
+        
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="guardarjugador8">Guardar</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <!-- Modalllllllllllllllllll -->
+<div class="modal fade" id="myModal9" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Seleccionar Jugador</h4>
+        </div>
+        <div class="modal-body">
+        
+        
+    <div class="form-group">
+      <label for="sel1">Pais:</label>
+      <select class="form-control" id="9sel1">
+        <option>Seleccionar pais</option>
+      </select>
+    </div>
+    
+        <div class="form-group">
+      <label for="sel2">Jugador:</label>
+      <select class="form-control" id="9sel2">
+        <option>Seleccionar jugador</option>
+      </select>
+    </div>
+           
+           <p><span class="roomNumber"></span>.</p>     
+        
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="guardarjugador9">Guardar</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <!-- Modalllllllllllllllllll -->
+<div class="modal fade" id="myModal10" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Seleccionar Jugador</h4>
+        </div>
+        <div class="modal-body">
+        
+        
+    <div class="form-group">
+      <label for="sel1">Pais:</label>
+      <select class="form-control" id="10sel1">
+        <option>Seleccionar pais</option>
+      </select>
+    </div>
+    
+        <div class="form-group">
+      <label for="sel2">Jugador:</label>
+      <select class="form-control" id="10sel2">
+        <option>Seleccionar jugador</option>
+      </select>
+    </div>
+           
+           <p><span class="roomNumber"></span>.</p>     
+        
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="guardarjugador10">Guardar</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <!-- Modalllllllllllllllllll -->
+<div class="modal fade" id="myModal11" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Seleccionar Jugador</h4>
+        </div>
+        <div class="modal-body">
+        
+        
+    <div class="form-group">
+      <label for="sel1">Pais:</label>
+      <select class="form-control" id="11sel1">
+        <option>Seleccionar pais</option>
+      </select>
+    </div>
+    
+        <div class="form-group">
+      <label for="sel2">Jugador:</label>
+      <select class="form-control" id="11sel2">
+        <option>Seleccionar jugador</option>
+      </select>
+    </div>
+           
+           <p><span class="roomNumber"></span>.</p>     
+        
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="guardarjugador11">Guardar</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <!-- Modalllllllllllllllllll -->
+
+  <!-- Modalllllllllllllllllll -->
+
+<form method="post" name="f1" style="display: none">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit" id="guardarequipo">Guardar Equipo y Salir</button>
+</form>
+  {% endblock %}
+  {% block script%}
+
+<script src="{% static 'js/EquipoIdealJuego.js' %}" ></script>
+
+  {%endblock %}
+  

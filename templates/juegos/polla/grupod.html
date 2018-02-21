@@ -1,0 +1,96 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Grupo B</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 450px}
+
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;}
+    }
+  </style>
+</head>
+<body>
+
+<div class="container-fluid text-center">
+  <div class="row content">
+    <div class="col-sm-8 text-left">
+      <h3>Primera Jornada</h3>
+      <hr>
+      <h4>Argentina vs. Islandia</h4>
+      <p>16/06/2018 | 08:00 hrs.</p>
+      <div class="btn-group">
+        <button type="button" class="apuesta btn btn-primary">Argentina<br>1.36</br></button>
+        <button type="button" class="apuesta btn btn-primary">Empate<br>4.75</br></button>
+        <button type="button" class="apuesta btn btn-primary">Islandia<br>9.25</br></button>
+      </div>
+      <hr>
+      <h4>Croacia vs. Nigeria</h4>
+      <p>16/06/2018 | 14:00 hrs.</p>
+      <div class="btn-group">
+        <button type="button" class="apuesta btn btn-primary">Croacia<br>1.90</br></button>
+        <button type="button" class="apuesta btn btn-primary">Empate<br>3.50</br></button>
+        <button type="button" class="apuesta btn btn-primary">Nigeria<br>4.20</br></button>
+      </div>
+      <hr>
+      <h3>Segunda Jornada</h3>
+      <hr>
+      <h4>Argentina vs. Croacia</h4>
+      <p>21/06/2018 | 13:00 hrs.</p>
+      <div class="btn-group">
+        <button type="button" class="apuesta btn btn-primary">Argentina<br>1.83</br></button>
+        <button type="button" class="apuesta btn btn-primary">Empate<br>3.40</br></button>
+        <button type="button" class="apuesta btn btn-primary">Croacia<br>4.75</br></button>
+      </div>
+      <hr>
+      <h4>Nigeria vs. Islandia</h4>
+      <p>22/06/2018 | 10:00 hrs.</p>
+      <div class="btn-group">
+        <button type="button" class="apuesta btn btn-primary">Nigeria<br>2.70</br></button>
+        <button type="button" class="apuesta btn btn-primary">Empate<br>3.20</br></button>
+        <button type="button" class="apuesta btn btn-primary">Islandia<br>2.79</br></button>
+      </div>
+      <hr>
+      <h3>Tercera Jornada</h3>
+      <hr>
+      <h4>Islandia vs. Croacia</h4>
+      <p>26/06/2018 | 13:00 hrs.</p>
+      <div class="btn-group">
+        <button type="button" class="apuesta btn btn-primary">Islandia<br>4.15</br></button>
+        <button type="button" class="apuesta btn btn-primary">Empate<br>3.50</br></button>
+        <button type="button" class="apuesta btn btn-primary">Croacia<br>1.80</br></button>
+      </div>
+      <hr>
+      <h4>Nigeria vs. Argentina</h4>
+      <p>26/06/2018 | 13:00 hrs.</p>
+      <div class="btn-group">
+        <button type="button" class="apuesta btn btn-primary">Nigeria<br>6.75</br></button>
+        <button type="button" class="apuesta btn btn-primary">Empate<br>4.10</br></button>
+        <button type="button" class="apuesta btn btn-primary">Argentina<br>1.45</br></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="{% static 'js/polla/apuesta.js' %}"></script>
+</body>
+</html>
